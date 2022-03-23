@@ -10,7 +10,7 @@ class Config:
 
     def __init__(
             self, api_key: str, instance_name: str = None, instance_url: str = None,
-            sdk_version: str = 'Unspecified'):
+            sdk_version: str = 'Unspecified', incident_id: int = None):
         """
 
         Args:
@@ -24,6 +24,8 @@ class Config:
         """
         self._sdk_version = sdk_version
         self._api_key = api_key
+        self._incident_id = incident_id
+
         if instance_url:
             self._instance_url = instance_url
             if not instance_url.endswith('/'):
@@ -37,7 +39,9 @@ class Config:
             self._instance_name = instance_name
         else:
             raise Exception('At least one of instance_url or instance_name should be provided')
+
         self._base_api_url = self._instance_url + self.BASE_API_PATH.format('{}', self._instance_name)
+
 
     @property
     def sdk_version(self):

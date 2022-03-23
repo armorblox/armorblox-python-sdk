@@ -23,7 +23,13 @@ class BaseApi:
     def endpoint(self, path: str, api_version: str = None) -> str:
         if api_version is None:
             api_version = self.version
-        return self._config.base_api_url.format(api_version) + path
+        
+        # Update base url to include incident_id if specified
+        if self._config.incident_id:
+            return self._config.base_api_url.format(api_version) + path + f"/{self._config.incident_id}"
+
+        else:
+            return self._config.base_api_url.format(api_version) + path
 
     def list_resource(self, path: str, headers: dict = None,
                       params: dict = None, options: dict = None):
@@ -48,5 +54,4 @@ class BaseApi:
             return response_json.get('incidents', [])
         else:
             return []
-
 

@@ -12,12 +12,14 @@ class Client:
     def sdk_version():
         return '0.1.0.20220201'
 
-    def __init__(self, api_key: str, instance_name: str = None, instance_url: str = None):
+    def __init__(self, api_key: str, instance_name: str = None, instance_url: str = None, incident_id: int = None):
         self.config = Config(api_key,
                              instance_name=instance_name,
                              instance_url=instance_url,
+                             incident_id = incident_id,
                              sdk_version=self.sdk_version())
 
     @cached_property
     def incidents(self):
         return IncidentsApi(self.config)
+
