@@ -17,17 +17,7 @@ class IncidentsApi(BaseApi):
         #            "to_date": "",
         # ABUSE_INCIDENT_TYPE
         # DLP_INCIDENT_TYPE
-
-        # params to pass if incident_id is specified
-        if self._config.incident_id:
-
-            params = {
-                'pageSize': 1,
-                'pageToken': 1
-            }
-
-        else:
-            params = {
+        params = {
             'page_size': self.PAGE_SIZE,
             'page_token': 0,
             'incidentTypesFilter': 'THREAT_INCIDENT_TYPE',
