@@ -23,6 +23,7 @@ class BaseApi:
     def endpoint(self, path: str, api_version: str = None) -> str:
         if api_version is None:
             api_version = self.version
+        
         return self._config.base_api_url.format(api_version) + path
 
     def list_resource(self, path: str, headers: dict = None,
