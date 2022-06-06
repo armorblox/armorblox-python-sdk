@@ -31,8 +31,7 @@ class IncidentsApi(BaseApi):
     def read(self, incident_id: int):
         
         params = {
-            'pageSize': 1,
-            'pageToken': 1
+            'pageSize': 20
         }
 
         return self.read_resource(self.PATH, incident_id, params=params)
