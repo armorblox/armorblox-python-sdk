@@ -35,4 +35,4 @@ class IncidentsApi(BaseApi):
             'pageToken': 1
         }
 
-        return self.read_resource(self.PATH, incident_id, params={})
+        return self.read_resource(self.PATH, incident_id, params=params)
