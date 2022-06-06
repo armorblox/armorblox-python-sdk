@@ -27,3 +27,12 @@ class IncidentsApi(BaseApi):
         }
 
         return self.list_resource(self.PATH, params=params)
+
+    def read(self, incident_id: int):
+        
+        params = {
+            'pageSize': 1,
+            'pageToken': 1
+        }
+
+        return self.read_resource(self.PATH, incident_id, params={})
