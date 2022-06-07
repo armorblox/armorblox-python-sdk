@@ -35,3 +35,4 @@ class IncidentsApi(BaseApi):
         }
 
         return self.get_resource(self.PATH, id, params=params)
+
