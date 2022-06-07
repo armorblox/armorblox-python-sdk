@@ -28,10 +28,10 @@ class IncidentsApi(BaseApi):
 
         return self.list_resource(self.PATH, params=params)
 
-    def read(self, incident_id: int):
+    def get(self, id: int):
         
         params = {
             'pageSize': 20
         }
 
-        return self.read_resource(self.PATH, incident_id, params=params)
+        return self.get_resource(self.PATH, id, params=params)
