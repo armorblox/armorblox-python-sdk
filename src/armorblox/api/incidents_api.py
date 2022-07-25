@@ -33,12 +33,15 @@ class IncidentsApi(BaseApi):
             params['page_token'] = page_token
 
         response_json, response = self.list_resource(self.PATH, params=params)
+        
         if response_json is None:
             return []
         else:
             next_page_token = response_json.get('next_page_token', None)
             total_count = response_json.get('total_count', 0)
-            return response_json.get('incidents', [])
+            incidents = response_json.get('incidents', [])
+            incidents.append({"next_page_token": next_page_token, 'total_count': total_count})
+            return incidents
 
     def get(self, incident_id: int):
         params = {
