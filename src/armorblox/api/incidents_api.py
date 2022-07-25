@@ -33,7 +33,6 @@ class IncidentsApi(BaseApi):
             params['page_token'] = page_token
 
         response_json, response = self.list_resource(self.PATH, params=params)
-        
         if response_json is None:
             return []
         else:
