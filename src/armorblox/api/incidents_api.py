@@ -34,7 +34,7 @@ class IncidentsApi(BaseApi):
 
         response_json, response = self.list_resource(self.PATH, params=params)
         if response_json is None:
-            return []
+            return [], None, 0
         else:
             next_page_token = response_json.get('next_page_token', None)
             total_count = int(response_json.get('total_count', 0))
