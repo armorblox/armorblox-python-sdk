@@ -51,7 +51,7 @@ class BaseApi:
         p = self.list_params()
         if params is not None:
             p.update(params)
-            #Cap page size to 50 for optimal performance
+            # Cap page size to 50 for optimal performance
             p["page_size"] = min(p["page_size"], self.PAGE_SIZE)
         if options is None:
             options = {}
