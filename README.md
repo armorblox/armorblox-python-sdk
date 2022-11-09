@@ -31,7 +31,8 @@ incident_analysis = c.incidents.analysis(78143)
 # Fetch information about an incident's sender data
 incident_senders = c.incidents.senders(78143)
 
-# Fetch information about an object associated with an incident (usually mail). Get the object ID from Get Incident by Id's response, under .events[].object_id
+# Fetch information about an object associated with an incident (usually mail). 
+# Get the object ID from Get Incident by Id's response, under .events[].object_id
 incident_object = c.incident.object('d72c07bc789c30cb4d63d78ee2861f94add695f9c812e30cfb081b20d3e7e5e7')
 
 # Updates the action to be taken for an incident's objects

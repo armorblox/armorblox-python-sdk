@@ -48,18 +48,17 @@ class IncidentsApi(BaseApi):
 
         return self.get_resource(self.PATH, str(incident_id), params=params)
 
-
     def analysis(self, incident_id: int):
-        return self.get_resource(self.PATH, str(incident_id), case='getAnalysis')
-
+        return self.get_resource(self.PATH, str(incident_id)+ ':getAnalysis')
 
     def senders(self, incident_id: int):
-        return self.get_resource(self.PATH, str(incident_id), case='getSenders')
+        return self.get_resource(self.PATH, str(incident_id)+ ':getSenders')
 
     def object(self, object_id: str):
         params = {'objectId': object_id, 'objectType':'CONTENT_MAIL'}
         options = {'api_version': 'v1alpha1'}
-        return self.get_resource_object('', params=params, options=options)
+        return self.get_resource('', ':getPolicyViolationDetailsByObjectId',
+                                 params=params, options=options)
 
     def update(self, incident_id: int, body: dict):
         return self.update_resource(self.PATH, str(incident_id), body=body)

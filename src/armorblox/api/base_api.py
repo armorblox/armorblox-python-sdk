@@ -63,7 +63,7 @@ class BaseApi:
             return None, response
     
     def get_resource(self, path: str, resource_id: str, headers: dict = None,
-                     params: dict = None, options: dict = None, case: str = None):
+                     params: dict = None, options: dict = None):
         """
 
         Args:
@@ -72,39 +72,6 @@ class BaseApi:
             headers: dict
             params: dict
             options: dict
-            case: str
-
-        Raises:
-            Exception:
-        """
-        h = self.headers()
-        if headers is not None:
-            h.update(headers)
-        if options is None:
-            options = {}
-
-        if case:
-            url = self.endpoint(path, options.get('api_version')) + f"/{resource_id}" + f":{case}"
-        else:
-            url = self.endpoint(path, options.get('api_version')) + f"/{resource_id}"
-
-        response = requests.get(url, headers=h, params=params)
-        
-        if response.status_code == 200:
-            return response.json()
-        else:
-            return {}
-
-    def get_resource_object(self, path: str, headers: dict = None,
-                     params: dict = None, options: dict = None):
-        """
-
-        Args:
-            path: str
-            headers: dict
-            params: dict
-            options: dict
-
         Raises:
             Exception:
         """
@@ -115,7 +82,10 @@ class BaseApi:
             options = {}
 
         url = self.endpoint(path, options.get('api_version'))
-        url = url.rstrip('/') + ":getPolicyViolationDetailsByObjectId"
+        if resource_id.startswith(':'):
+            url = f"{url.rstrip('/')}{resource_id}"
+        else:
+            url = f"{url}/{resource_id}"
 
         response = requests.get(url, headers=h, params=params)
 
@@ -123,6 +93,7 @@ class BaseApi:
             return response.json()
         else:
             return {}
+
 
     def update_resource(self, path: str, resource_id: str, headers: dict = None,
                      params: dict = None, options: dict = None, body: dict = None):
