@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-
-import requests
 import json
+import requests
 
 class BaseApi:
     PAGE_SIZE = 50
@@ -82,6 +81,7 @@ class BaseApi:
             options = {}
 
         url = self.endpoint(path, options.get('api_version'))
+        # ':' indicates that this is a tenant-scoped call and not a resource-scoped one
         if resource_id.startswith(':'):
             url = f"{url.rstrip('/')}{resource_id}"
         else:
@@ -116,9 +116,9 @@ class BaseApi:
         if options is None:
             options = {}
 
-        url = self.endpoint(path, options.get('api_version')) + f"/{resource_id}" + ":updateAction"
-        response = requests.request("PATCH", url, headers=h, params=params, data=json.dumps(body))
+        url = self.endpoint(path, options.get('api_version')) + f"/{resource_id}"
+        response = requests.patch(url, headers=h, params=params, data=json.dumps(body))
         if response.status_code == 200:
-            return response.json()
+            return response.json(), None
         else:
-            return {}
+            return None, response
