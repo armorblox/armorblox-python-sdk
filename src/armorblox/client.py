@@ -2,7 +2,7 @@
 
 
 from armorblox.config import Config
-from armorblox.api.incidents_api import IncidentsApi, ThreatsApi, DLPIncidentsApi, AbuseIncidentsApi
+from armorblox.api.incidents_api import IncidentsApi, ThreatsApi, DLPIncidentsApi, AbuseIncidentsApi, EACIncidentsApi, GraymailIncidentsApi
 from cached_property import cached_property
 
 
@@ -33,3 +33,11 @@ class Client:
     @cached_property
     def abuse_incidents(self):
         return AbuseIncidentsApi(self.config)
+
+    @cached_property
+    def eac_incidents(self):
+        return EACIncidentsApi(self.config)
+    
+    @cached_property
+    def graymail_incidents(self):
+        return GraymailIncidentsApi(self.config)

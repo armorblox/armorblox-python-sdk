@@ -10,6 +10,8 @@ class IncidentType(Enum):
     THREAT_INCIDENT_TYPE = 1
     DLP_INCIDENT_TYPE = 2
     ABUSE_INCIDENT_TYPE = 3
+    EAC_INCIDENT_TYPE = 4
+    GRAYMAIL_INCIDENT_TYPE = 5
 
 
 class IncidentsApi(BaseApi):
@@ -79,3 +81,12 @@ class AbuseIncidentsApi(IncidentsApi):
     def __init__(self, config):
         super().__init__(config, IncidentType.ABUSE_INCIDENT_TYPE)
 
+
+class EACIncidentsApi(IncidentsApi):
+    def __init__(self, config):
+        super().__init__(config, IncidentType.EAC_INCIDENT_TYPE)
+
+
+class GraymailIncidentsApi(IncidentsApi):
+    def __init__(self, config):
+        super().__init__(config, IncidentType.GRAYMAIL_INCIDENT_TYPE)

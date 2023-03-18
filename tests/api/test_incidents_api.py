@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from armorblox.api.incidents_api import IncidentsApi, ThreatsApi, DLPIncidentsApi, AbuseIncidentsApi
+from armorblox.api.incidents_api import IncidentsApi, ThreatsApi, DLPIncidentsApi, AbuseIncidentsApi, EACIncidentsApi, GraymailIncidentsApi
 from armorblox.config import Config
 import pytest
 import responses
