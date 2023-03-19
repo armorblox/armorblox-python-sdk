@@ -1,5 +1,8 @@
 # Change Log
 
+## Version 0.1.4 (2023-03-20)
+
+* Support for EAC and Graymail incident types
 ## Version 0.1.3 (2022-11-16)
 
 * Support for incident analysis, senders, mails & update action APIs
