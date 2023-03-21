@@ -64,6 +64,20 @@ dlp_incidents, next_page_token, total_incident_count = c.dlp_incidents.list()
 dlp_incident = c.dlp_incidents.get(44010)
 
 
+# Fetch a list of EAC incidents
+eac_incidents, next_page_token, total_incident_count = c.eac_incidents.list()
+
+# Fetch a specific EAC incident
+eac_incident = c.eac_incidents.get(67)
+
+
+# Fetch a list of Graymail incidents
+graymail_incidents, next_page_token, total_incident_count = c.graymail_incidents.list()
+
+# Fetch a specific EAC incident
+graymail_incident = c.graymail_incidents.get(2627)
+
+
 # Example to fetch all threats using next_page_token
 next_page_token = None
 incidents = []
